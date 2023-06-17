@@ -53,3 +53,7 @@ input::placeholder {
 .weather__units span:first-child {
   margin-right: 0.5rem;
 }
+.weather__body {
+  text-align: center;
+  margin-top: 3rem;
+}

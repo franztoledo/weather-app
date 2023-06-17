@@ -10,7 +10,23 @@
   background: #171717;
   color: #fff;
   padding: 2rem;
-  width: 40%;
+  width: 60%;
   margin: 4rem auto;
   border-radius: 10px;
+}
+.weather__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+input {
+  border: none;
+  background: #1e1e1e;
+  outline: none;
+  color: #fff;
+  padding: 0.5rem 2.5rem;
+  border-radius: 5px;
+}
+input::placeholder {
+  color: #fff;
 }

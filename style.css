@@ -41,3 +41,15 @@ input::placeholder {
   font-size: 15px;
   color: #fff;
 }
+
+.weather__units {
+  font-size: 1.5rem;
+}
+
+.weather__units span {
+  cursor: pointer;
+}
+
+.weather__units span:first-child {
+  margin-right: 0.5rem;
+}

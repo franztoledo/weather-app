@@ -1,7 +1,7 @@
 import { API_KEY } from "./utils.js";
 //state
 
-let currCity='Lima,PE'
+let currCity='Puno,PE'
 let units='M'
 
 //selector
@@ -11,6 +11,7 @@ let dateTime = document.querySelector('.weather__datetime')
 let weather__forecast = document.querySelector('.weather__forecast');
 let weather__icon = document.querySelector(".weather__icon");
 let weather__temperature = document.querySelector(".weather__temperature");
+let weather__minmax = document.querySelector(".weather__minmax")
 
 //change code country to name country
 function convertCountryCode(country){
@@ -35,7 +36,10 @@ function getWeather() {
     weather__forecast.innerHTML = `<p>${data.data[0].weather.description}`
     weather__icon.innerHTML = `   <img src="https://cdn.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png" />`
     weather__temperature.innerHTML = `${data.data[0].temp.toFixed()}&#176`
-
+  })
+  fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${currCity}&days=5&units=${units}&key=${API_KEY}`).then(res=>res.json()).then(data=>{
+    console.log(data);
+    weather__minmax.innerHTML = `<p>Min: ${data.data[0].min_temp.toFixed()}&#176</p><p>Max: ${data.data[0].max_temp.toFixed()}&#176</p>`
   })
 }
 

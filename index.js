@@ -1,7 +1,7 @@
 import { API_KEY } from "./utils.js";
 //state
 
-let currCity='London,UK'
+let currCity='Lima, PE'
 let units='M'
 
 //selector
@@ -29,14 +29,43 @@ function getTimeByZone(timezone){
   return date.toLocaleString('en-US', options);
 }
 //date car
-function getWeekDay(date,zone){
-  const infodate = new Date(date);
+function getWeekDay(date){
+  const infodate = new Date(`${date}T00:00-0800`);
   const options = { weekday: 'long', day:'numeric'};
-  options.timeZone = zone;
   return infodate.toLocaleString('en-US', options)
 }
+//search
+document.querySelector(".weather__search").addEventListener('submit', e => {
+  let search = document.querySelector(".weather__searchform");
+  // prevent default action
+  e.preventDefault();
+  // change current city
+  currCity = search.value;
+  // get weather forecast 
+  weather__info.innerHTML=''
+  getWeather();
+  // clear form
+  search.value = ""
+})
 
+// units
+document.querySelector(".weather_unit_celsius").addEventListener('click', () => {
+  if(units !== "M"){
+      // change to metric
+      units = "M"
+      // get weather forecast 
+      getWeather()
+  }
+})
 
+document.querySelector(".weather_unit_farenheit").addEventListener('click', () => {
+  if(units !== "I"){
+      // change to imperial
+      units = "I"
+      // get weather forecast 
+      getWeather()
+  }
+})
 function getWeather() {
   fetch(`https://api.weatherbit.io/v2.0/current?city=${currCity}&units=${units}&key=${API_KEY}`).then(res=>res.json()).then(data=>{
     console.log(data);

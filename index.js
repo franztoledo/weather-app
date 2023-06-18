@@ -8,6 +8,7 @@ let units='M'
 
 let city = document.querySelector('.weather__city')
 let dateTime = document.querySelector('.weather__datetime')
+let weather__forecast = document.querySelector('.weather__forecast');
 
 //change code country to name country
 function convertCountryCode(country){
@@ -25,12 +26,13 @@ function getTimeByZone(timezone){
 
 
 function getWeather() {
-  fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${currCity}&days=5&units=${units}&key=${API_KEY}`).then(res=>res.json()).then(data=>{
+  fetch(`https://api.weatherbit.io/v2.0/current?city=${currCity}&units=${units}&key=${API_KEY}`).then(res=>res.json()).then(data=>{
     console.log(data);
-    city.innerHTML = `${data.city_name}, ${convertCountryCode(data.country_code)}`
-    dateTime.innerHTML = getTimeByZone(data.timezone)
+    city.innerHTML = `${data.data[0].city_name}, ${convertCountryCode(data.data[0].country_code)}`
+    dateTime.innerHTML = getTimeByZone(data.data[0].timezone)
+    weather__forecast.innerHTML = `<p>${data.data[0].weather.description}`
+    
   })
-  
 }
 
 getWeather()

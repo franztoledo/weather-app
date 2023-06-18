@@ -19,7 +19,11 @@
   justify-content: space-between;
   align-items: center;
 }
+form{
+  width: 70%;
+}
 input {
+  width: 100%;
   border: none;
   background: #2e2e2e;
   outline: none;

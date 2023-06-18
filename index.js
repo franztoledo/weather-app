@@ -54,6 +54,7 @@ document.querySelector(".weather_unit_celsius").addEventListener('click', () => 
       // change to metric
       units = "M"
       // get weather forecast 
+      weather__info.innerHTML=''
       getWeather()
   }
 })
@@ -62,7 +63,8 @@ document.querySelector(".weather_unit_farenheit").addEventListener('click', () =
   if(units !== "I"){
       // change to imperial
       units = "I"
-      // get weather forecast 
+      // get weather forecast
+      weather__info.innerHTML=''
       getWeather()
   }
 })

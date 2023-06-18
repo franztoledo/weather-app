@@ -1,7 +1,7 @@
 import { API_KEY } from "./utils.js";
 //state
 
-let currCity='Puno,PE'
+let currCity='London,UK'
 let units='M'
 
 //selector
@@ -24,14 +24,16 @@ function convertCountryCode(country){
 //date 
 function getTimeByZone(timezone){
   const date = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: `${timezone}`, hour12:true};
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12:true};
+  options.timeZone=timezone
   return date.toLocaleString('en-US', options);
 }
 //date car
-function getWeekDay(date,timezone){
-  const weekday = new Date(date);
-  const options = { weekday: 'long', day:'numeric',timeZone: `${timezone}`};
-  return weekday.toLocaleString('en-US', options);
+function getWeekDay(date,zone){
+  const infodate = new Date(date);
+  const options = { weekday: 'long', day:'numeric'};
+  options.timeZone = zone;
+  return infodate.toLocaleString('en-US', options)
 }
 
 
@@ -71,7 +73,8 @@ function getWeather() {
       const weather__card_icon = document.querySelector(`.icon${info.datetime}`)
       const weather__card_temperature = document.querySelector(`.temp${info.datetime}`)
       const weather__card_minmax = document.querySelector(`.minmax${info.datetime}`)
-
+      console.log();
+      console.log(getWeekDay(info.datetime,data.timezone));
       weather__card_date.innerHTML= getWeekDay(info.datetime,data.timezone)
       weather__card_icon.innerHTML= `<img src="https://cdn.weatherbit.io/static/img/icons/${info.weather.icon}.png" />`
       weather__card_temperature.innerHTML=`${info.temp.toFixed()}&#176`

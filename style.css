@@ -73,6 +73,7 @@ input::placeholder {
 
 .weather__icon img {
   width: 100px;
+  object-fit:contain;
 }
 
 .weather__temperature {

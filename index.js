@@ -10,6 +10,7 @@ let city = document.querySelector('.weather__city')
 let dateTime = document.querySelector('.weather__datetime')
 let weather__forecast = document.querySelector('.weather__forecast');
 let weather__icon = document.querySelector(".weather__icon");
+let weather__temperature = document.querySelector(".weather__temperature");
 
 //change code country to name country
 function convertCountryCode(country){
@@ -33,6 +34,7 @@ function getWeather() {
     dateTime.innerHTML = getTimeByZone(data.data[0].timezone)
     weather__forecast.innerHTML = `<p>${data.data[0].weather.description}`
     weather__icon.innerHTML = `   <img src="https://cdn.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png" />`
+    weather__temperature.innerHTML = `${data.data[0].temp.toFixed()}&#176`
 
   })
 }

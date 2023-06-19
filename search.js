@@ -1,4 +1,4 @@
-import { search, matchList } from "./index.js";
+import { matchList } from "./index.js";
 
 
 const searchStates = async searchtText=>{
@@ -20,12 +20,9 @@ const searchStates = async searchtText=>{
 //show results in Html
 const outputHtml= matches=>{
   if(matches.length > 0){
-    const html= matches.map(match=>`
-      <div class='search_match' omclick=selectInput(this)>
-        <h4>${match.name},${match.stateCode},${match.countryCode}</h4>
-      </div>
-    `).join('')
+    const html= matches.map(match=>`<li class='search_match' onclick='select(this)'>${match.name},${match.stateCode},${match.countryCode}</li>`).join('')
     matchList.innerHTML=html;
   }
 }
+
 export {searchStates}

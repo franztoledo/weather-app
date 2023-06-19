@@ -4,7 +4,7 @@ import { searchStates } from "./search.js";
 
 let currCity='Lima, PE'
 let units='M'
-
+window.select= select;
 //selector
 
 let city = document.querySelector('.weather__city')
@@ -14,9 +14,8 @@ let weather__icon = document.querySelector(".weather__icon");
 let weather__temperature = document.querySelector(".weather__temperature");
 let weather__minmax = document.querySelector(".weather__minmax")
 let weather__info=document.querySelector('.weather__info')
-export let search = document.querySelector('.weather__searchform')
+let search = document.querySelector('.weather__searchform')
 export let matchList = document.getElementById('match-list')
-
 //debounce
 const debounce =(fn,delay)=>{
   let timeoutID;
@@ -32,7 +31,12 @@ const debounce =(fn,delay)=>{
 
 //search
 search.addEventListener('keyup',debounce(()=> searchStates(search.value),500))
-
+// search input change
+function select(element){
+  let selectUserData= element.textContent
+  matchList.innerHTML=''
+  search.value = selectUserData
+}
 //change code country to name country
 function convertCountryCode(country){
   let regionNames = new Intl.DisplayNames(["en"], {type: "region"});

@@ -16,6 +16,7 @@
 }
 .weather__header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -45,9 +46,14 @@ input::placeholder {
   font-size: 15px;
   color: #fff;
 }
-
+#match-list{
+  width: calc(70% - 36px);
+  margin-left: 36px;
+  
+}
 .weather__units {
   font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .weather__units span {

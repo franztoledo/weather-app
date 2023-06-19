@@ -1,4 +1,5 @@
 import { API_KEY } from "./utils.js";
+import { searchStates } from "./search.js";
 //state
 
 let currCity='Lima, PE'
@@ -13,8 +14,12 @@ let weather__icon = document.querySelector(".weather__icon");
 let weather__temperature = document.querySelector(".weather__temperature");
 let weather__minmax = document.querySelector(".weather__minmax")
 let weather__info=document.querySelector('.weather__info')
+export let search = document.querySelector('.weather__searchform')
+export let matchList = document.getElementById('match-list')
 
 
+//search
+search.addEventListener('keyup',()=> searchStates(search.value))
 
 //change code country to name country
 function convertCountryCode(country){

@@ -21,7 +21,7 @@ const searchStates = async searchtText=>{
 const outputHtml= matches=>{
   if(matches.length > 0){
     const html= matches.map(match=>`
-      <div class='search_match'>
+      <div class='search_match' omclick=selectInput(this)>
         <h4>${match.name},${match.stateCode},${match.countryCode}</h4>
       </div>
     `).join('')

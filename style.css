@@ -49,7 +49,9 @@ input::placeholder {
 #match-list{
   width: calc(70% - 36px);
   margin-left: 36px;
-  
+}
+.search_match{
+  cursor: pointer;
 }
 .weather__units {
   font-size: 1.5rem;

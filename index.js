@@ -17,6 +17,18 @@ let weather__info=document.querySelector('.weather__info')
 export let search = document.querySelector('.weather__searchform')
 export let matchList = document.getElementById('match-list')
 
+//debounce
+const debounce =(fn,delay)=>{
+  let timeoutID;
+  return function(...args){
+    if(timeoutID){
+      clearTimeout(timeoutID)
+    }
+    timeoutID= setTimeout(()=>{
+      fn(...args)
+    },delay)
+  }
+}
 
 //search
 search.addEventListener('keyup',()=> searchStates(search.value))

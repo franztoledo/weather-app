@@ -31,7 +31,7 @@ const debounce =(fn,delay)=>{
 }
 
 //search
-search.addEventListener('keyup',()=> searchStates(search.value))
+search.addEventListener('keyup',debounce(()=> searchStates(search.value),500))
 
 //change code country to name country
 function convertCountryCode(country){

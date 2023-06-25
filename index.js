@@ -1,8 +1,12 @@
 import { API_KEY } from "./utils.js";
 import { searchStates } from "./search.js";
+let currCity
 //state
-
-let currCity='Lima, PE'
+if(!localStorage.getItem('lastCity')){
+  currCity = 'Lima,PE'
+} else{
+  currCity = localStorage.getItem('lastCity')
+}
 let units='M'
 window.select= select;
 //selector
@@ -63,10 +67,17 @@ document.querySelector(".weather__search").addEventListener('submit', e => {
   // change current city
   currCity = search.value;
   // get weather forecast 
-  weather__info.innerHTML=''
+  if(currCity.length > 0){
+    weather__info.innerHTML=''
+  }
   getWeather();
+  //localStorage
+  localStorage.setItem('lastCity', search.value)
+
+  console.log(localStorage);
   // clear form
   search.value = ""
+ 
 })
 
 // units

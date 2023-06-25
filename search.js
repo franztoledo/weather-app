@@ -6,21 +6,20 @@ const searchStates = async searchtText=>{
   const cities= await res.json()
   let data = cities.data.map(city=>({
     name: city.name,
-    stateCode: city.regionCode,
     countryCode: city.countryCode
   }))
   if(searchtText.length === 0){
     data=[]
     matchList.innerHTML=''
   }
-  console.log(data);
+  console.log(data)
   
   outputHtml(data)
 }
 //show results in Html
 const outputHtml= matches=>{
   if(matches.length > 0){
-    const html= matches.map(match=>`<li class='search_match' onclick='select(this)'>${match.name},${match.stateCode},${match.countryCode}</li>`).join('')
+    const html= matches.map(match=>`<li class='search_match' onclick='select(this)'>${match.name},${match.countryCode}</li>`).join('')
     matchList.innerHTML=html;
   }
 }
